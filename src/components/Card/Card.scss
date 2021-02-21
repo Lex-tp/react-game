@@ -1,0 +1,44 @@
+.card {
+  width: 120px;
+  height: 170px;
+  perspective: 1000px;
+  margin: 10px;
+
+  &__flipper {
+    position: relative;
+    transition: 0.8s ease;
+    transform-style: preserve-3d;
+  }
+
+  &__front {
+    background-color: blueviolet;
+    transform: rotateY(180deg);
+  }
+
+  &__back {
+    background-color: #f38181;
+  }
+
+  &__front, &__back {
+    position: absolute;
+    width: 120px;
+    height: 170px;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    border: 5px solid #eaffd0;
+    box-sizing: border-box;
+
+    &__img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &:hover &__flipper {
+    cursor: pointer;
+    transform: rotateY(-180deg);
+  }
+}
+
