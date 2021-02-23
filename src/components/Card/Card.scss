@@ -1,6 +1,8 @@
+@import "../../styles/color";
+
 .card {
-  width: 120px;
-  height: 170px;
+  width: 130px;
+  height: 180px;
   perspective: 1000px;
   margin: 10px;
 
@@ -11,29 +13,45 @@
   }
 
   &__front {
-    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
     transform: rotateY(180deg);
+
+    &__title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 5px 0;
+    }
+
+    &__img {
+      width: 95px;
+      height: 95px;
+    }
   }
 
   &__back {
-    background-color: #f38181;
-  }
-
-  &__front, &__back {
-    position: absolute;
-    width: 120px;
-    height: 170px;
-    top: 0;
-    left: 0;
-    border-radius: 10px;
-    backface-visibility: hidden;
-    border: 5px solid #eaffd0;
-    box-sizing: border-box;
+    background-color: $light-red-color;
 
     &__img {
       width: 100%;
       height: 100%;
     }
+  }
+
+  &__front, &__back {
+    position: absolute;
+    width: 130px;
+    height: 180px;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    border: 5px solid $light-yellow;
+    box-sizing: border-box;
   }
 
   &:hover &__flipper {

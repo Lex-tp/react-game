@@ -1,5 +1,10 @@
+@import "../../styles/fonts";
+@import "../../styles/color";
+
 .app {
+  font-family: Roboto, sans-serif;
+  font-size: 10px;
   width: 100vw;
   height: 100vh;
-  background-color: #95e1d3;
+  background-color: $aquamarine-color;
 }
