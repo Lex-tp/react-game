@@ -12,6 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/Lex-tp/react-game.git"
   },
+  "type": "module",
   "author": "Denis Korotkevich <volk.denis98@gmail.com>",
   "license": "ISC",
   "dependencies": {
@@ -54,7 +55,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:3002/",
   "devDependencies": {
     "normalize.css": "^8.0.1"
   }
