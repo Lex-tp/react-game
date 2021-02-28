@@ -5,6 +5,8 @@
   height: 180px;
   perspective: 1000px;
   margin: 10px;
+  user-select: none;
+  -webkit-touch-callout: none;
 
   &__flipper {
     position: relative;
@@ -17,7 +19,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: #e5e5e5;
     transform: rotateY(180deg);
 
     &__title {

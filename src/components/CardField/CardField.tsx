@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 
-import './Cardfield.scss'
+import './CardField.scss'
 import Card, {CardProps} from "../Card/Card";
 
 
-export default class Cardfield extends Component<{}, { cards: Array<any> }> {
+export default class CardField extends Component<{}, { cards: Array<any> }> {
 
     constructor(props:any) {
         super(props);
@@ -13,14 +13,14 @@ export default class Cardfield extends Component<{}, { cards: Array<any> }> {
         }
     }
 
-    fetchData = () => {
-        fetch('/level-1')
+    fetchData = (url:string) => {
+        fetch(url)
             .then(res => res.json())
             .then(cards => this.setState({cards}));
     }
 
     componentDidMount() {
-        this.fetchData();
+        this.fetchData('/level-1');
     }
 
 
@@ -30,7 +30,7 @@ export default class Cardfield extends Component<{}, { cards: Array<any> }> {
             <div className='field'>
                 {
                     this.state.cards.map((cardLine: any, indexLine: number) => {
-                        return (<div className='field-line' key={indexLine}>
+                        return (<div className='field__line' key={indexLine}>
                             {
                                 cardLine.line.map((card: CardProps) => {
                                     return <Card key={card.index} frontImage={card.frontImage}

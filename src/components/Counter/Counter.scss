@@ -1,0 +1,24 @@
+@import "../../styles/color";
+
+.counter-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  user-select: none;
+  -webkit-touch-callout: none;
+
+  &__icon {
+    width: 55px;
+    height: 55px;
+    margin-right: 5px;
+    transform: rotate(45deg);
+  }
+
+  &__moves {
+    font-size: 3.4rem;
+    font-weight: 700;
+    color: $light-red-color;
+  }
+}

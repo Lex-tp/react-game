@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import Cardfield from "../Cardfield/Cardfield";
+import CardField from "../CardField/CardField";
 
 import 'normalize.css'
 import './App.scss'
+import Counter from "../Counter/Counter";
+import ControlPanel from "../ControlPanel/ControlPanel";
 
 export default class App extends Component<{}, {}> {
 
@@ -10,7 +12,9 @@ export default class App extends Component<{}, {}> {
     render() {
         return (
             <div className='app'>
-                <Cardfield/>
+                <Counter count={10} />
+                <CardField />
+                <ControlPanel />
             </div>
         );
     }
