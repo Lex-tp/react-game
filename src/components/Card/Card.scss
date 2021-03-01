@@ -6,7 +6,6 @@
   perspective: 1000px;
   margin: 10px;
   user-select: none;
-  -webkit-touch-callout: none;
 
   &__flipper {
     position: relative;
@@ -30,6 +29,7 @@
     }
 
     &__img {
+      pointer-events: none;
       width: 90px;
       height: 90px;
     }
@@ -39,6 +39,7 @@
     background-image: repeating-linear-gradient(45deg, $light-red-color, $light-red-color 10px, #ef8b8b 10px, #ef8b8b 20px);
 
     &__img {
+      pointer-events: none;
       width: 100%;
       height: 100%;
     }
@@ -56,9 +57,12 @@
     box-sizing: border-box;
   }
 
-  &:hover &__flipper {
-    cursor: pointer;
+  &__active &__flipper {
     transform: rotateY(-180deg);
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 }
 

@@ -8,6 +8,7 @@ function fillWithCards(arrayOfCards, field) {
             cardOfField.frontImage = card.src;
             cardOfField.titleCard = card.title;
             cardOfField.index = indexCard;
+            cardOfField.shortcut = card.shortcut;
         });
     });
     return field;

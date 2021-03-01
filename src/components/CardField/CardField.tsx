@@ -6,14 +6,14 @@ import Card, {CardProps} from "../Card/Card";
 
 export default class CardField extends Component<{}, { cards: Array<any> }> {
 
-    constructor(props:any) {
+    constructor(props: any) {
         super(props);
         this.state = {
-            cards:[]
+            cards: []
         }
     }
 
-    fetchData = (url:string) => {
+    fetchData = (url: string) => {
         fetch(url)
             .then(res => res.json())
             .then(cards => this.setState({cards}));
@@ -22,8 +22,6 @@ export default class CardField extends Component<{}, { cards: Array<any> }> {
     componentDidMount() {
         this.fetchData('/level-1');
     }
-
-
 
     render() {
         return (
@@ -34,7 +32,8 @@ export default class CardField extends Component<{}, { cards: Array<any> }> {
                             {
                                 cardLine.line.map((card: CardProps) => {
                                     return <Card key={card.index} frontImage={card.frontImage}
-                                                 titleCard={card.titleCard}/>;
+                                                 titleCard={card.titleCard} shortcut={card.shortcut}
+                                                 onSelect={(e) => console.log(e.currentTarget)}/>;
                                 })
                             }
                         </div>);
