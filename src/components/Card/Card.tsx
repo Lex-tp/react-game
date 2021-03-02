@@ -42,8 +42,8 @@ export default class Card extends Component <CardProps, { isOpen: boolean }> {
         return (
             <div id={this.props.shortcut} className={`card ${this.state.isOpen ? 'card__active' : ''}`}
                  onClick={(e) => {
-                     this.props.onSelect(e);
                      this.activeCards();
+                     this.props.onSelect(e);
                  }}>
                 <div className="card__flipper">
                     <div className='card__front'>
@@ -57,5 +57,4 @@ export default class Card extends Component <CardProps, { isOpen: boolean }> {
             </div>
         );
     }
-
 }

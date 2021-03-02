@@ -3,13 +3,21 @@ import React, {Component} from "react";
 import './CardField.scss'
 import Card, {CardProps} from "../Card/Card";
 
+interface CardFieldState {
+    cards: Array<any>,
+    selectFirstCard: string,
+    selectSecondCard: string,
+}
 
-export default class CardField extends Component<{}, { cards: Array<any> }> {
+export default class CardField extends Component<{}, CardFieldState> {
+
 
     constructor(props: any) {
         super(props);
         this.state = {
-            cards: []
+            cards: [],
+            selectFirstCard: '',
+            selectSecondCard: '',
         }
     }
 
@@ -23,6 +31,34 @@ export default class CardField extends Component<{}, { cards: Array<any> }> {
         this.fetchData('/level-1');
     }
 
+    selectCard(cardId: any) {
+        this.verifySelectedCards();
+        if (this.state.selectFirstCard) {
+            this.setState(() => {
+                return {
+                    selectSecondCard: cardId,
+                }
+            });
+        } else {
+            this.setState(() => {
+                return {
+                    selectFirstCard: cardId,
+                }
+            });
+        }
+    }
+
+    verifySelectedCards() {
+        if (this.state.selectFirstCard && this.state.selectSecondCard) {
+            this.setState(() => {
+                return {
+                    selectFirstCard: '',
+                    selectSecondCard: '',
+                }
+            });
+        }
+    }
+
     render() {
         return (
             <div className='field'>
@@ -33,7 +69,9 @@ export default class CardField extends Component<{}, { cards: Array<any> }> {
                                 cardLine.line.map((card: CardProps) => {
                                     return <Card key={card.index} frontImage={card.frontImage}
                                                  titleCard={card.titleCard} shortcut={card.shortcut}
-                                                 onSelect={(e) => console.log(e.currentTarget)}/>;
+                                                 onSelect={(e) => {
+                                                     this.selectCard(e.currentTarget.id);
+                                                 }}/>;
                                 })
                             }
                         </div>);
