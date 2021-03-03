@@ -1,4 +1,41 @@
+@import "../../styles/color";
+
 .menu {
+  position: absolute;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  width: 1024px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 2rem;
+
+  &__label {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 65px;
+    color: $light-red-color;
+    -webkit-text-stroke: 1px $light-yellow;
+    -webkit-text-fill-color: $light-red-color;
+  }
+
+  &__new, &__continue, &__docs {
+    display: flex;
+    width: 400px;
+    height: 70px;
+    margin: 15px 0;
+    background-color: $light-yellow;
+    border: 3px solid $light-red-color;
+    border-radius: 15px;
+    color: $light-red-color;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 15px 1px rgba(19,19,19,0.2);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

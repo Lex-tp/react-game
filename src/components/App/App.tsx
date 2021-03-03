@@ -1,21 +1,23 @@
 import React, {Component} from 'react';
 import CardField from "../CardField/CardField";
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import 'normalize.css'
 import './App.scss'
-import Counter from "../Counter/Counter";
-import ControlPanel from "../ControlPanel/ControlPanel";
+import Menu from "../Menu/Menu";
 
 export default class App extends Component<{}, {}> {
 
-
     render() {
         return (
-            <div className='app'>
-                <Counter count={10} />
-                <CardField />
-                <ControlPanel />
-            </div>
+            <BrowserRouter>
+                <div className='app'>
+                    <Switch>
+                    <Route path='/game' component={CardField}/>
+                    <Route path='/' component={Menu}/>
+                    </Switch>
+                </div>
+            </BrowserRouter>
         );
     }
 }

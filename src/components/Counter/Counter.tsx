@@ -7,21 +7,13 @@ export interface CounterProps {
     count: number
 }
 
-export default class Counter extends Component<CounterProps,{count:number}> {
-
-    constructor(props:CounterProps) {
-        super(props);
-
-        this.state = {
-            count: props.count
-        }
-    }
+export default class Counter extends Component<CounterProps,{}> {
 
     render() {
         return (
           <div className='counter-box' title='Счетчик оставшихся ходов'>
               <img className='counter-box__icon' src={Steps} alt='moves'/>
-              <span className='counter-box__moves'>{this.state.count}</span>
+              <span className='counter-box__moves'>{this.props.count}</span>
           </div>
         );
     }

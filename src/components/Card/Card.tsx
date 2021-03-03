@@ -3,8 +3,6 @@ import React, {Component} from "react";
 import './Card.scss';
 import Card_back from './images/back_card.svg';
 
-const Open_sound = require('./sounds/openCard.mp3').default;
-
 export interface CardProps {
     frontImage?: string,
     titleCard?: string,
@@ -15,26 +13,12 @@ export interface CardProps {
     onSelect(e: React.MouseEvent): void,
 }
 
-export default class Card extends Component <CardProps, { isOpen: boolean }> {
-    private audio: HTMLAudioElement;
-
-    constructor(props: CardProps) {
-        super(props);
-        this.audio = new Audio(Open_sound);
-        this.activeCards = this.activeCards.bind(this);
-    }
-
-    activeCards() {
-        if (!this.props.isOpen) {
-            this.audio.play();
-        }
-    }
+export default class Card extends Component <CardProps, {}> {
 
     render() {
         return (
             <div id={this.props.shortcut} className={`card ${this.props.isOpen ? 'card__active' : ''}`}
                  onClick={(e) => {
-                     this.activeCards();
                      this.props.onSelect(e);
                  }}>
                 <div className="card__flipper">

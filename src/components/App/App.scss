@@ -2,8 +2,7 @@
 @import "../../styles/color";
 
 .app {
-  display: flex;
-  flex-direction: column;
+  position: relative;
   font-family: Roboto, sans-serif;
   font-size: 10px;
   width: 100vw;
