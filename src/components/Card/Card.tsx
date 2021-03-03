@@ -10,6 +10,7 @@ export interface CardProps {
     titleCard?: string,
     index?: number,
     shortcut?: string,
+    isOpen: boolean,
 
     onSelect(e: React.MouseEvent): void,
 }
@@ -20,27 +21,18 @@ export default class Card extends Component <CardProps, { isOpen: boolean }> {
     constructor(props: CardProps) {
         super(props);
         this.audio = new Audio(Open_sound);
-        this.state = {
-            isOpen: false
-        };
         this.activeCards = this.activeCards.bind(this);
     }
 
     activeCards() {
-        this.setState((state) => {
-            return {
-                isOpen: true,
-            }
-        });
-
-        if (!this.state.isOpen) {
+        if (!this.props.isOpen) {
             this.audio.play();
         }
     }
 
     render() {
         return (
-            <div id={this.props.shortcut} className={`card ${this.state.isOpen ? 'card__active' : ''}`}
+            <div id={this.props.shortcut} className={`card ${this.props.isOpen ? 'card__active' : ''}`}
                  onClick={(e) => {
                      this.activeCards();
                      this.props.onSelect(e);

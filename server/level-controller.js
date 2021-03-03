@@ -9,6 +9,7 @@ function fillWithCards(arrayOfCards, field) {
             cardOfField.titleCard = card.title;
             cardOfField.index = indexCard;
             cardOfField.shortcut = card.shortcut;
+            cardOfField.isOpen = card.isOpen;
         });
     });
     return field;
