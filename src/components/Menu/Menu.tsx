@@ -16,7 +16,6 @@ export default class Menu extends Component<{onClickButton(): void},{}> {
                     this.props.onClickButton();
                 }}>New game</a>
                 <a href='/game' className='menu__continue'>Continue</a>
-                <a href='/' className='menu__records'>High score</a>
             </div>
         );
     }
