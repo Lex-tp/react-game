@@ -1,7 +1,7 @@
 import  {fillWithCards} from '../level-controller.js';
 
 const arrayOfCards = [
-    {shortcut: 'cd', title: 'CD', src: './level/images/cd.png', isOpen: true},
+    {shortcut: 'cd', title: 'CD', src: '../App/images/cd.png', isOpen: true},
     {shortcut: 'key', title: 'Keyboard', src: './level/images/keyboard.png', isOpen: true},
     {shortcut: 'mot', title: 'Motherboard', src: './level/images/motherboard.png', isOpen: true},
     {shortcut: 'mou', title: 'Computer mouse', src: './level/images/mouse.png', isOpen: true},

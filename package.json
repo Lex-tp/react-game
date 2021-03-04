@@ -7,7 +7,7 @@
     "react-game",
     "memory game"
   ],
-  "homepage": "./",
+  "homepage": "https://lex-tp-react-game.netlify.app",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Lex-tp/react-game.git"
@@ -37,7 +37,8 @@
     "start": "BROWSER='google-chrome-stable' react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node server/server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -57,7 +58,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3002/",
+  "proxy": "https://express-react-game.herokuapp.com/",
   "devDependencies": {
     "normalize.css": "^8.0.1"
   }

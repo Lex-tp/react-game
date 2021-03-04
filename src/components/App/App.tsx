@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import CardField from "../CardField/CardField";
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {HashRouter, Route, Switch} from 'react-router-dom';
 
 import 'normalize.css'
 import './App.scss'
@@ -25,11 +25,11 @@ export default class App extends Component<{}, {}> {
 
     render() {
         return (
-            <BrowserRouter>
+            <HashRouter>
                 <div className='app'>
                     <Switch>
                         <Route path='/game' component={() => <CardField/>}/>
-                        <Route path='/' render={() => <Menu onClickButton={()=>{this.onClickButton()}}/>}/>
+                        <Route exact path='/' render={() => <Menu onClickButton={()=>{this.onClickButton()}}/>}/>
                     </Switch>
                     <div className='footer'>
                         <div className='footer__item'>
@@ -44,7 +44,7 @@ export default class App extends Component<{}, {}> {
                         </div>
                     </div>
                 </div>
-            </BrowserRouter>
+            </HashRouter>
         );
     }
 }

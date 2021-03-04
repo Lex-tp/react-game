@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 import './WinPanel.scss'
 import move from '../Counter/images/steps.png'
@@ -26,8 +27,10 @@ class WinPanel extends Component<WinPanelProps, {}> {
                     <span
                         className={`winBox__score__number ${this.props.show ? 'winBox__score__number__show' : ''}`}>{this.props.moves}</span>
                 </div>
-                <a href='/game' className='winBox__button' onClick={() => { this.clearSaves()}}>Restart</a>
-                <a href='/' className='winBox__button' onClick={() => { this.clearSaves()}}>Main Menu</a>
+                <Link to='/game' className='winBox__button' onClick={() => {
+                    window.location.reload();
+                    this.clearSaves()}}>Restart</Link>
+                <Link to='/' className='winBox__button' onClick={() => { this.clearSaves()}}>Main Menu</Link>
             </div>
         );
     }

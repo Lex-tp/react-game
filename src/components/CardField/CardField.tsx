@@ -63,7 +63,7 @@ export default class CardField extends Component<{}, CardFieldState> {
                 }
             });
         }else {
-            this.fetchData('/game   ');
+            this.fetchData('https://express-react-game.herokuapp.com/game',);
             setTimeout(() => {
                 const {cards} = this.state;
                 let newCards = JSON.parse(JSON.stringify(cards));

@@ -7,6 +7,7 @@ import loud from './images/loud.png';
 import menu from './images/menu.png';
 import mute from './images/mute.png';
 import restart from './images/restart.png'
+import {Link} from 'react-router-dom';
 
 interface ControlPanelProps {
     buttonClick(e: React.MouseEvent): void
@@ -25,13 +26,14 @@ export default class ControlPanel extends Component<ControlPanelProps, { sound: 
     render() {
         return (
             <div className='panel'>
-                <ControlPanelItem id='restart' icon={restart} toolTip='Restart game' buttonClick={()=>{
+                <Link to='/game'><ControlPanelItem id='restart' icon={restart} toolTip='Restart game' buttonClick={()=>{
+                    window.location.reload();
                     localStorage.removeItem('cards');
                     localStorage.removeItem('score');
                     localStorage.removeItem('success');
                     localStorage.removeItem('count');
-                }} link='/game'/>
-                <ControlPanelItem id='menu' icon={menu} toolTip='Go to Menu' buttonClick={this.props.buttonClick} link='/'/>
+                }}/></Link>
+               <Link to='/'><ControlPanelItem id='menu' icon={menu} toolTip='Go to Menu' buttonClick={this.props.buttonClick}/></Link>
                 <ControlPanelItem id='sound' icon={this.state.sound ? loud : mute} toolTip='Sound' buttonClick={(e) => {
                     this.props.buttonClick(e);
                     this.setState((prev)=>{
