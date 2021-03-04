@@ -4,7 +4,7 @@ import './Menu.scss';
 
 import logo from './images/logo.png'
 
-export default class Menu extends Component {
+export default class Menu extends Component<{onClickButton(): void},{}> {
 
 
     render() {
@@ -12,9 +12,11 @@ export default class Menu extends Component {
             <div className='menu'>
                 <img src={logo} alt='logo'/>
                 <span className='menu__label'>Memory game</span>
-                <a href='/game' className='menu__new'>New game</a>
-                <a href='/' className='menu__continue'>Continue</a>
-                <a href='/' className='menu__docs'>Description</a>
+                <a href='/game' className='menu__new' onClick={()=>{
+                    this.props.onClickButton();
+                }}>New game</a>
+                <a href='/game' className='menu__continue'>Continue</a>
+                <a href='/' className='menu__records'>High score</a>
             </div>
         );
     }

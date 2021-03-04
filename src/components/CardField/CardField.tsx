@@ -4,6 +4,7 @@ import './CardField.scss'
 import Card, {CardProps} from "../Card/Card";
 import Counter from "../Counter/Counter";
 import ControlPanel from "../ControlPanel/ControlPanel";
+import WinPanel from "../WinPanel/WinPanel";
 
 const Open_sound = require('./sounds/openCard.mp3').default;
 const Close_sound = require('./sounds/closeCard.mp3').default;
@@ -17,6 +18,7 @@ interface CardFieldState {
     countCards: number,
     successCombination: number,
     countMove: number,
+    finish: boolean
 }
 
 export default class CardField extends Component<{}, CardFieldState> {
@@ -34,7 +36,8 @@ export default class CardField extends Component<{}, CardFieldState> {
             canFlip: true,
             countCards: 0,
             successCombination: 1,
-            countMove: 3
+            countMove: 0,
+            finish: false
         }
         this.audioOpen = new Audio(Open_sound);
         this.audioSuccess = new Audio(Success);
@@ -50,31 +53,42 @@ export default class CardField extends Component<{}, CardFieldState> {
     }
 
     componentDidMount() {
-        this.fetchData('/level-1');
-        setTimeout(() => {
-            const {cards} = this.state;
-            let newCards = JSON.parse(JSON.stringify(cards));
-            let countItems = 0;
-            newCards = newCards.map((cardLine: any) => {
+        if(localStorage.getItem('cards')!==null){
+            this.setState(()=>{
                 return {
-                    line: cardLine.line.map((card: CardProps) => {
-                        countItems++;
-                        card.isOpen = false;
-                        return card;
-                    })
+                    cards: JSON.parse(localStorage.getItem('cards') as string),
+                    countMove: parseInt((localStorage.getItem('score') as string)),
+                    successCombination: parseInt((localStorage.getItem('success') as string)),
+                    countCards: parseInt((localStorage.getItem('count') as string)),
                 }
             });
-            this.setState(() => {
-                return {
-                    cards: newCards,
-                    countCards: countItems
-                }
-            })
-        }, 2000);
+        }else {
+            this.fetchData('/game   ');
+            setTimeout(() => {
+                const {cards} = this.state;
+                let newCards = JSON.parse(JSON.stringify(cards));
+                let countItems = 0;
+                newCards = newCards.map((cardLine: any) => {
+                    return {
+                        line: cardLine.line.map((card: CardProps) => {
+                            countItems++;
+                            card.isOpen = false;
+                            return card;
+                        })
+                    }
+                });
+                this.setState(() => {
+                    return {
+                        cards: newCards,
+                        countCards: countItems
+                    }
+                })
+            }, 2500);
+        }
     }
 
     selectCards(lineIndex: any, cardIndex: any) {
-        const {selectFirstCard, cards, canFlip, countMove} = this.state;
+        const {selectFirstCard, cards, canFlip} = this.state;
         const newCards = JSON.parse(JSON.stringify(cards));
         const currentCard = newCards[lineIndex].line[cardIndex];
 
@@ -85,7 +99,7 @@ export default class CardField extends Component<{}, CardFieldState> {
             if (this.checkTempSelection(selectFirstCard)) {
                 this.setState((prev) => {
                     return {
-                        countMove: prev.countMove - 1,
+                        countMove: prev.countMove + 1,
                         selectSecondCard: [lineIndex, cardIndex],
                         cards: newCards
                     }
@@ -95,11 +109,11 @@ export default class CardField extends Component<{}, CardFieldState> {
                 });
                 setTimeout(() => {
                     this.verifySelectedCards();
+                    localStorage.setItem('cards',JSON.stringify(this.state.cards));
+                    localStorage.setItem('score',this.state.countMove.toString());
+                    localStorage.setItem('success',this.state.successCombination.toString());
+                    localStorage.setItem('count',this.state.countCards.toString());
                 }, 1000);
-                if (countMove <= 1) {
-                    console.log('lose');
-                    return;
-                }
             } else {
                 this.setState(() => {
                     return {
@@ -143,12 +157,16 @@ export default class CardField extends Component<{}, CardFieldState> {
                         successCombination: prev.successCombination + 1,
                     }
                 });
-                if (countCards / 2 === successCombination) {
-                    console.log('win');
-                    return;
-                }
                 this.audioSuccess.currentTime = 0;
                 this.audioSuccess.play();
+                if (countCards / 2 === successCombination) {
+                    this.setState((prev)=>{
+                        return {
+                            finish: !prev.finish
+                        }
+                    })
+                    return;
+                }
             }
             this.setState(() => {
                 return {
@@ -165,15 +183,16 @@ export default class CardField extends Component<{}, CardFieldState> {
 
     buttonClick(e: React.MouseEvent) {
         if (e.currentTarget.id === 'sound') {
-            this.audioOpen.volume = this.audioOpen.volume === 0 ? 1 : 0;
-            this.audioClose.volume = this.audioClose.volume === 0 ? 1 : 0;
-            this.audioSuccess.volume = this.audioSuccess.volume === 0 ? 0.5 : 0;
+                this.audioOpen.muted = !this.audioOpen.muted;
+                this.audioClose.muted = !this.audioClose.muted;
+                this.audioSuccess.muted = !this.audioSuccess.muted;
         }
     }
 
     render() {
         return (
             <div className='field-box'>
+               <WinPanel show={this.state.finish} moves={this.state.countMove}/>
                 <Counter count={this.state.countMove}/>
                 <div className='field'>
                     {

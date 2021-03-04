@@ -1,27 +1,32 @@
-@import "../../styles/color";
+@import '../../styles/color';
 
-.menu {
-  position: absolute;
+.winBox {
   display: flex;
   flex-direction: column;
+  position: absolute;
+  justify-content: center;
   align-items: center;
-  max-width: 1024px;
-  width: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2rem;
+  width: 100vw;
+  height: 100vh;
+  background-color: $aquamarine-color;
+  z-index: 1;
+  transition: .3s ease;
+  transform: scale(0);
 
-  &__label {
-    font-size: 5rem;
+  &__show {
+    transform: scale(1);
+  }
+
+  &__text {
+    font-size: 6rem;
     font-weight: 700;
-    margin-bottom: 65px;
     color: $light-red-color;
+    margin-bottom: 45px;
     -webkit-text-stroke: 1px $light-yellow;
     -webkit-text-fill-color: $light-red-color;
   }
 
-  &__new, &__continue, &__records {
+  &__button {
     display: flex;
     width: 400px;
     height: 70px;
@@ -30,6 +35,7 @@
     border: 3px solid $light-red-color;
     border-radius: 15px;
     color: $light-red-color;
+    font-size: 3rem;
     font-weight: 700;
     justify-content: center;
     align-items: center;
@@ -38,11 +44,31 @@
     text-decoration: none;
 
     &:hover {
-      cursor: pointer;
       background-color: $light-red-color;
       border: 3px solid $light-yellow;
       border-radius: 15px;
       color: $light-yellow;
+    }
+  }
+
+  &__score {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 45px;
+
+    &__img {
+      transform: rotate(45deg);
+      margin-right: 15px;
+      max-height: 100px;
+    }
+
+    &__number {
+      font-size: 5.5rem;
+      font-weight: 700;
+      color: $light-red-color;
     }
   }
 }

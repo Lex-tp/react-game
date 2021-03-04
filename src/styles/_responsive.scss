@@ -1,0 +1,202 @@
+@media (max-width: 1600px) {
+  .field {
+    margin: 20px auto;
+  }
+  .counter-box {
+    height: 80px;
+  }
+  .button {
+    width: 65px;
+    height: 65px;
+
+    &__icon {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .card {
+    width: 100px;
+    height: 145px;
+    margin: 5px;
+
+    &__flipper, &__front, &__back {
+      width: 100px;
+      height: 145px;
+    }
+
+    &__front{
+      &__title {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1240px) {
+  .card {
+    width: 90px;
+    height: 140px;
+    margin: 3.5px;
+
+    &__flipper, &__front, &__back {
+      width: 90px;
+      height: 140px;
+    }
+
+    &__front{
+      &__title {
+        font-size: 0.8rem;
+      }
+
+      &__img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+}
+
+@media (max-width: 981px) {
+  .card {
+    width: 80px;
+    height: 130px;
+    margin: 3px;
+
+    &__flipper, &__front, &__back {
+      width: 80px;
+      height: 130px;
+    }
+
+    &__front{
+      &__title {
+        font-size: 0.6rem;
+      }
+
+      &__img {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  }
+}
+
+@media (max-width:871px) {
+  .card {
+    width: 70px;
+    height: 100px;
+    margin: 3px;
+
+    &__flipper, &__front, &__back {
+      width: 70px;
+      height: 100px;
+    }
+
+    &__front{
+      &__title {
+        font-size: 0.6rem;
+      }
+
+      &__img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+}
+
+
+@media (max-width:771px) {
+  .menu {
+
+    &__new, &__continue, &__records {
+      width: 300px;
+      height: 55px;
+    }
+  }
+
+  .counter-box {
+    &__moves {
+      font-size:2.4rem
+    }
+
+    &__icon {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .button {
+    width: 55px;
+    height: 55px;
+
+    &__icon {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .card {
+    width: 60px;
+    height: 90px;
+    margin: 3px;
+
+    &__flipper, &__front, &__back {
+      width: 60px;
+      height: 90px;
+    }
+
+    &__front{
+      &__title {
+        font-size: 0.6rem;
+      }
+
+      &__img {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  }
+}
+
+@media (max-width:675px) {
+
+  .menu {
+
+    &__label {
+      text-align: center;
+      font-size: 4rem;
+      margin-bottom: 40px;
+    }
+
+    &__new, &__continue, &__records {
+      width: 250px;
+      height: 55px;
+    }
+  }
+  .card {
+    width: 45px;
+    height: 75px;
+    margin: 2px;
+
+    &__flipper, &__front, &__back {
+      width: 45px;
+      height: 75px;
+    }
+
+    &__front{
+      border: 3px solid #eaffd0;
+      &__title {
+        font-size: 0.35rem;
+      }
+
+      &__img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &__back {
+      border: 3px solid #eaffd0;
+    }
+  }
+}
