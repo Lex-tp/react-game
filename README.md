@@ -3,7 +3,7 @@
 
 ### [Демо](https://lex-tp-react-game.netlify.app/#/)
 ### [Cсылка на Pull Request](https://github.com/Lex-tp/react-game/pull/1)
-### Memory game works on macOS, Windows, and Linux.
+### Memory game запускается на macOS, Windows, and Linux.
 Для запуска игры необходимо установить все зависимости:
 
     npm install
